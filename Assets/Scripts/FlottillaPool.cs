@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlottillaPool : MonoBehaviour {
+    private GameController gc;
     public GameObject prefab;
     public FlottillaBlueprint[] bp;
 
     [HideInInspector]
     public Queue<FlottillaController> pool;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+    }
+
+    void Start () {
         pool = new Queue<FlottillaController>();
 	}
 	
 	public void Pool (FlottillaController toPool) {
+        toPool.gameObject.SetActive(false);
         pool.Enqueue(toPool);
 	}
 
@@ -22,8 +28,10 @@ public class FlottillaPool : MonoBehaviour {
     {
         if (pool.Count > 0)
         {
-            FlottillaController f = pool.Dequeue();
-            return f;
+            FlottillaController fc = pool.Dequeue();
+            fc.SetUp();
+            fc.gameObject.SetActive(true);
+            return fc;
         }
         else
         {

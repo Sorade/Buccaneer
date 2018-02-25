@@ -9,8 +9,12 @@ public class PlayerCombat : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	public bool EvaluateOutcome (FlottillaStats enemyStats) {
+        return false;
 	}
+
+    public bool ResolveOutcome(FlottillaStats enemyStats)
+    {
+        return true;
+    }
 }

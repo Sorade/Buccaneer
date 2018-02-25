@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0cbfd3606fc1554bb4ae87f4265b4f3, type: 3}
-  m_Name: MerchantFlottilla
+  m_Name: PlayerFlottilla
   m_EditorClassIdentifier: 
-  mission: 0
+  mission: 2
   stayDelay: 1
-  gold: 5
+  gold: 0

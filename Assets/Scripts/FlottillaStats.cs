@@ -11,11 +11,14 @@ public class FlottillaStats : MonoBehaviour {
     [HideInInspector]
     public float gold;
 
-    // Use this for initialization
-    void Start () {
+    void Start()
+    {
+        SetUp();
+    }
+
+    public void SetUp() {
         mission = bp.mission;
         stayDelay = bp.stayDelay;
         gold = bp.gold;
-
     }
 }
