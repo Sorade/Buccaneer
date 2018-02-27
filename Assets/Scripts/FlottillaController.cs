@@ -11,7 +11,6 @@ public enum Mission
 
 [RequireComponent(typeof(FlottillaMotor))]
 public class FlottillaController : MonoBehaviour {
-    private GameController gc;
     private FlottillaStats stats;
     private FlottillaMotor motor;
     private Collider col;
@@ -25,31 +24,32 @@ public class FlottillaController : MonoBehaviour {
         motor = GetComponent<FlottillaMotor>();
         col = GetComponent<Collider>();
         playerCombat = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombat>();
-        gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     private void Start()
     {
-        motor.SetRandomDest();
+        //motor.SetRandomDest();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collided with " + other.gameObject.name);
+        Interactions(other);
+    }
 
+    private void Interactions(Collider other)
+    {
         string otherTag = other.gameObject.tag;
         switch (otherTag)
         {
             case "Port":
-                Debug.Log("Interact with " + other.gameObject.name);
                 ArriveInPort(other.gameObject.GetComponent<PortController>());
                 break;
             case "Player":
-                Debug.Log("Interact with " + other.gameObject.name);
+                //if player wins the battle
                 if (playerCombat.ResolveOutcome(stats))
                 {
-                    gc.gameObject.GetComponent<FlottillaPool>().Pool(this);
-                    gc.flottillaInGame -= 1;
+                    GameController.instance.gameObject.GetComponent<FlottillaPool>().Pool(this);
+                    GameController.instance.flottillaInGame -= 1;
                 }
                 break;
             default:
@@ -76,23 +76,19 @@ public class FlottillaController : MonoBehaviour {
 
     public void LeavePort()
     {
-        transform.rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
-        Vector3 newDest = currentPort.RequestDestination(stats.mission);
-        motor.MoveToPoint(newDest);
-        currentPort = null;
-        //StartCoroutine(SafetyColliderDisable());
+        //checks that the flottilla in indeed in a port before leaving it
+        if (currentPort != null)
+        {
+            transform.rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
+            Vector3 newDest = currentPort.RequestDestination(stats.mission);
+            motor.MoveToPoint(newDest);
+            currentPort = null;
+
+        }
     }
 
     public void ArriveInPort(PortController port){
         currentPort = port;
         currentPort.Dock(this);
     }
-
-    IEnumerator SafetyColliderDisable()
-    {
-        col.enabled = false;
-        yield return new WaitForSeconds(1f);
-        col.enabled = true;
-    }
-
 }

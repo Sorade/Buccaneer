@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlottillaPool : MonoBehaviour {
-    private GameController gc;
     public GameObject prefab;
     public FlottillaBlueprint[] bp;
 
     [HideInInspector]
     public Queue<FlottillaController> pool;
-
-    private void Awake()
-    {
-        gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-    }
 
     void Start () {
         pool = new Queue<FlottillaController>();

@@ -9,7 +9,9 @@ public class FlottillaStats : MonoBehaviour {
     [HideInInspector]
     public float stayDelay;
     [HideInInspector]
-    public float gold;
+    public int gold;
+    [HideInInspector]
+    public int cannons;
 
     void Start()
     {
@@ -20,5 +22,6 @@ public class FlottillaStats : MonoBehaviour {
         mission = bp.mission;
         stayDelay = bp.stayDelay;
         gold = bp.gold;
+        cannons = bp.cannons;
     }
 }

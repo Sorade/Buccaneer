@@ -23,7 +23,6 @@ public class PortController : MonoBehaviour {
 
         public FlottillaController Dequeue()
         {
-            Debug.Log(queue.Count);
             active = queue.Dequeue();
             active.WakeUp();
             return active;
@@ -55,7 +54,6 @@ public class PortController : MonoBehaviour {
 	
     public Vector3 RequestDestination(Mission mission)
     {
-        Debug.Log("Request dest from " + gameObject.name);
         return otherPortLocs[ Random.Range(0, otherPortLocs.Length)];
     }
 
@@ -99,7 +97,6 @@ public class PortController : MonoBehaviour {
 
     void UnDock()
     {
-        Debug.Log(docked.GetCount());
         FlottillaController fc = docked.Dequeue();
         if (fc != null)
         {

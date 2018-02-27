@@ -14,3 +14,4 @@ MonoBehaviour:
   mission: 2
   stayDelay: 1
   gold: 0
+  cannons: 25

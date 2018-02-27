@@ -7,4 +7,5 @@ public class FlottillaBlueprint : ScriptableObject {
     public Mission mission;
     public float stayDelay;
     public int gold;
+    public int cannons;
 }
