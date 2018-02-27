@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlottillaPool : MonoBehaviour {
-    public GameObject prefab;
+    public GameObject[] prefab;
     public FlottillaBlueprint[] bp;
 
     [HideInInspector]
@@ -29,7 +29,7 @@ public class FlottillaPool : MonoBehaviour {
         }
         else
         {
-            GameObject newFlottilla = GameObject.Instantiate(prefab);
+            GameObject newFlottilla = GameObject.Instantiate(prefab[Random.Range(0, prefab.Length)]);
             FlottillaController controller = newFlottilla.GetComponent<FlottillaController>();
             return controller;
         }

@@ -32,6 +32,7 @@ public class PlayerCombat : MonoBehaviour {
         else
         {           
             Debug.Log("GAME OVER.");
+            GameController.instance.GameOver();
             isVictorious = false;
         }
         enemyStats = null;

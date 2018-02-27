@@ -54,7 +54,7 @@ public class PortController : MonoBehaviour {
 	
     public Vector3 RequestDestination(Mission mission)
     {
-        return otherPortLocs[ Random.Range(0, otherPortLocs.Length)];
+        return otherPortLocs[Random.Range(0, otherPortLocs.Length)];
     }
 
     private void Update()

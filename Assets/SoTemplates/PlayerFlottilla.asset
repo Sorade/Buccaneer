@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: PlayerFlottilla
   m_EditorClassIdentifier: 
   mission: 2
-  stayDelay: 1
   gold: 0
   cannons: 25
+  speed: 4

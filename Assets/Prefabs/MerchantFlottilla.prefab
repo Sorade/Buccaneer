@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114364895122693228}
   - component: {fileID: 114500419340758158}
   m_Layer: 0
-  m_Name: AIFlotilla
+  m_Name: MerchantFlottilla
   m_TagString: Flottilla
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6f77e845ccabd994391feac6945ea941, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,9 +179,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bp: {fileID: 11400000, guid: d5e34d0c52bd1a24a8136ab2f5788343, type: 2}
   mission: 0
-  stayDelay: 0
   gold: 0
   cannons: 0
+  speed: 0
 --- !u!195 &195546597203569418
 NavMeshAgent:
   m_ObjectHideFlags: 1

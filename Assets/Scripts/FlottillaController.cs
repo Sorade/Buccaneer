@@ -15,6 +15,7 @@ public class FlottillaController : MonoBehaviour {
     private FlottillaMotor motor;
     private Collider col;
     private PlayerCombat playerCombat;
+    private Behaviour behaviour;
 
     private PortController currentPort;
 
@@ -24,11 +25,15 @@ public class FlottillaController : MonoBehaviour {
         motor = GetComponent<FlottillaMotor>();
         col = GetComponent<Collider>();
         playerCombat = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombat>();
+        behaviour = GetComponent<Behaviour>();
     }
 
-    private void Start()
+    void Update()
     {
-        //motor.SetRandomDest();
+        if (behaviour != null && currentPort == null)
+        {
+            behaviour.MissionRoutine();
+        }
     }
 
     void OnTriggerEnter(Collider other)

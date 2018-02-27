@@ -7,21 +7,39 @@ public class FlottillaStats : MonoBehaviour {
     [HideInInspector]
     public Mission mission;
     [HideInInspector]
-    public float stayDelay;
-    [HideInInspector]
     public int gold;
     [HideInInspector]
     public int cannons;
+    [HideInInspector]
+    public float speed;
 
-    void Start()
+    void Awake()
     {
         SetUp();
     }
 
     public void SetUp() {
         mission = bp.mission;
-        stayDelay = bp.stayDelay;
         gold = bp.gold;
         cannons = bp.cannons;
+        speed = bp.speed;
+
+        AddBehaviour();
+    }
+
+    void AddBehaviour()
+    {
+        switch (mission)
+        {
+            case Mission.MERCHANT:
+                break;
+            case Mission.HUNTER:
+                gameObject.AddComponent<HunterBehaviour>();
+                break;
+            case Mission.PLAYER:
+                break;
+            default:
+                break;
+        }
     }
 }

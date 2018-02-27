@@ -55,5 +55,11 @@ public class GameController : MonoBehaviour {
             int randIndex = Random.Range(0, allPorts.Length);
             allPorts[randIndex].SpawnFlottilla();
         }
-    }        
+    }
+    
+    public void GameOver()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.SetActive(false);
+    }       
 }
