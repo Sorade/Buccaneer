@@ -55,6 +55,11 @@ public class GameController : MonoBehaviour {
             int randIndex = Random.Range(0, allPorts.Length);
             allPorts[randIndex].SpawnFlottilla();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
     
     public void GameOver()

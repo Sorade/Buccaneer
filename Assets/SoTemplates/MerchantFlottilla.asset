@@ -14,4 +14,4 @@ MonoBehaviour:
   mission: 0
   gold: 5
   cannons: 0
-  speed: 5
+  speed: 3
