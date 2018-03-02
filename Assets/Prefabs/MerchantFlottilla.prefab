@@ -20,11 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4379961041625636}
   - component: {fileID: 195534089280459510}
-  - component: {fileID: 65568525933624794}
   - component: {fileID: 54035792364498290}
   - component: {fileID: 114111865435041554}
   - component: {fileID: 114459351844298846}
   - component: {fileID: 114956953929105000}
+  - component: {fileID: 135168403159610760}
+  - component: {fileID: 114139690945986660}
   m_Layer: 0
   m_Name: MerchantFlottilla
   m_TagString: Flottilla
@@ -56,13 +57,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1481053831211988}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 4379961041625636}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
 --- !u!4 &4379961041625636
 Transform:
   m_ObjectHideFlags: 1
@@ -134,18 +135,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65568525933624794
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1386407492348182}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 1, z: 2.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95361665214926564
 Animator:
   serializedVersion: 3
@@ -179,6 +168,19 @@ MonoBehaviour:
   gold: 0
   cannons: 0
   speed: 0
+--- !u!114 &114139690945986660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1386407492348182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efa3a45af003464da811b6d255e0e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 195534089280459510}
+  radius: 0.9
 --- !u!114 &114459351844298846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,6 +203,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45468a93fd379d24c87d540d08038f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135168403159610760
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1386407492348182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.95
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195534089280459510
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -209,7 +223,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1386407492348182}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.9
   m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50

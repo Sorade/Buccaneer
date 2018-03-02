@@ -43,6 +43,9 @@ public class FlottillaController : MonoBehaviour {
 
     private void Interactions(Collider other)
     {
+        //if the flottilla is disabled then don't perform any interactions
+        if (!this.enabled) { return; }
+
         string otherTag = other.gameObject.tag;
         switch (otherTag)
         {
