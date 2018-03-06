@@ -8,8 +8,12 @@ public class UIManager : MonoBehaviour {
     [HideInInspector]
     public static UIManager instance = null;
     public Text scoreBoard;
-    public GameObject restartButton;
-    public GameObject gameOverText;
+
+    [Header("Main Menu UI")]
+    public GameObject mainMenu;
+
+    [Header("Game Over UI")]
+    public GameObject gameOverMenu;
 
     private void Awake()
     {
@@ -28,9 +32,20 @@ public class UIManager : MonoBehaviour {
         #endregion //Singleton
     }
 
-    private void Start()
+    private void OnEnable()
     {
         EventManager.StartListening(SimpleEvent.GAME_OVER, ShowGameOverMenu);
+        EventManager.StartListening(SimpleEvent.SCENE_LOADED, ShowMainMenu);
+        EventManager.StartListening(SimpleEvent.GAME_START, HideMainMenu);
+
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening(SimpleEvent.GAME_OVER, ShowGameOverMenu);
+        EventManager.StopListening(SimpleEvent.SCENE_LOADED, ShowMainMenu);
+        EventManager.StopListening(SimpleEvent.GAME_START, HideMainMenu);
+
     }
 
     private void Update()
@@ -40,7 +55,16 @@ public class UIManager : MonoBehaviour {
 
     void ShowGameOverMenu()
     {
-        restartButton.SetActive(true);
-        gameOverText.SetActive(true);
+        gameOverMenu.SetActive(true);
+    }
+
+    void ShowMainMenu()
+    {
+        mainMenu.SetActive(true);
+    }
+
+    void HideMainMenu()
+    {
+        mainMenu.SetActive(false);
     }
 }

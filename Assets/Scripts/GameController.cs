@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     public int flottillaInGame;
     private PortController[] allPorts;
     public GameObject player;
+    public AudioController audioController;
 
     public int score;
 
@@ -32,8 +33,10 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        EventManager.TriggerEvent(SimpleEvent.SCENE_LOADED);
         player = GameObject.FindGameObjectWithTag("Player");
-
+        audioController = gameObject.GetComponent<AudioController>();
+        PauseGame(1); // starts by pausing the game
 
         GameObject[] allPortGOs = GameObject.FindGameObjectsWithTag("Port");
         allPorts = new PortController[allPortGOs.Length];
@@ -64,22 +67,60 @@ public class GameController : MonoBehaviour {
         {
             Application.Quit();
         }
-    }
-    
-    public void GameOver()
-    {
-        player.SetActive(false);
-        EventManager.TriggerEvent(SimpleEvent.GAME_OVER);
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseGame(-1);
+        }
     }
 
-    IEnumerator RestartGame()
+    /// <summary>
+    /// pause = 0, unpause = 1, flip = -1
+    /// </summary>
+    /// <param name="doPause"></param>
+    void PauseGame(int doPause)
     {
-        yield return new WaitForSeconds(1.5f);
+        if (doPause != 0 && Mathf.Abs(doPause) != 1)
+        {
+            Debug.Log("Invalid Pause argument, select 0, 1, or -1.");
+            return;
+        }
+
+        if (doPause == 1)
+        {
+            Time.timeScale = 0;
+            Debug.Log("Pause");
+
+        }
+        else if (doPause == 0)
+        {
+            Time.timeScale = 1;
+            Debug.Log("UnPause");
+        }
+        else
+        {
+            Time.timeScale = Mathf.Abs(Time.timeScale - 1);
+            Debug.Log("Flip Pause");
+        }
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("GAME OVER.");
+        player.SetActive(false);
+        EventManager.TriggerEvent(SimpleEvent.GAME_OVER);
+        PauseGame(1);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
         StartGame();
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene(0);
+        EventManager.TriggerEvent(SimpleEvent.GAME_START);
+        PauseGame(0);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioController : MonoBehaviour {
     public AudioClip main;
     public AudioSource mainSource;
+    public AudioSource SFXChannel_1;
 
 	// Use this for initialization
 	void Start () {
@@ -12,8 +13,9 @@ public class AudioController : MonoBehaviour {
         mainSource.Play();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public void PlaySFX(AudioClip clip)
+    {
+        SFXChannel_1.clip = clip;
+        SFXChannel_1.Play();
+    }
 }

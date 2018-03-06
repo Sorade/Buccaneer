@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum SimpleEvent { SCENE_LOADED, PLAYER_DIED, GAME_OVER}
+public enum SimpleEvent { SCENE_LOADED, PLAYER_DIED, GAME_OVER, GAME_START }
 
 public class EventManager : MonoBehaviour
 {

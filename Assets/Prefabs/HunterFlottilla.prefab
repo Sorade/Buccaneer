@@ -36,7 +36,6 @@ GameObject:
   - component: {fileID: 4951915884805036}
   - component: {fileID: 33443306882457134}
   - component: {fileID: 23788446069322474}
-  - component: {fileID: 95413649427537110}
   m_Layer: 0
   m_Name: Ship_2 (1)
   m_TagString: Untagged
@@ -76,7 +75,6 @@ GameObject:
   - component: {fileID: 4576433542410226}
   - component: {fileID: 33893250443326132}
   - component: {fileID: 23218269625699246}
-  - component: {fileID: 95331527172080772}
   m_Layer: 0
   m_Name: Ship_2
   m_TagString: Untagged
@@ -154,7 +152,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: ed931612a2b20bb41bcb2b69a72d483f, type: 2}
-  - {fileID: 2100000, guid: ed931612a2b20bb41bcb2b69a72d483f, type: 2}
+  - {fileID: 2100000, guid: 2fb32f32b4b36eb47adb3224197711eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -189,7 +187,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: ed931612a2b20bb41bcb2b69a72d483f, type: 2}
-  - {fileID: 2100000, guid: ed931612a2b20bb41bcb2b69a72d483f, type: 2}
+  - {fileID: 2100000, guid: 2fb32f32b4b36eb47adb3224197711eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,40 +236,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &95331527172080772
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452494454772288}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0b6ef67e81fe4844f95e508eccc49fd5, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95413649427537110
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1200249851388590}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0b6ef67e81fe4844f95e508eccc49fd5, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114137549434299444
 MonoBehaviour:
   m_ObjectHideFlags: 1

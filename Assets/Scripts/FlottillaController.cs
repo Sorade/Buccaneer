@@ -69,9 +69,10 @@ public class FlottillaController : MonoBehaviour {
     {
         transform.Find("GFX").gameObject.SetActive(false);
         this.enabled = false;
+        motor.MoveToPoint(transform.position);
     }
 
-    public void WakeUp() { 
+    public void WakeUp() {
         this.enabled = true;
         //transform.rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
         transform.Find("GFX").gameObject.SetActive(true);

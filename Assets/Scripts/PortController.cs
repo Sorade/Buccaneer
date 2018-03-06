@@ -84,7 +84,7 @@ public class PortController : MonoBehaviour {
         {
             gc.flottillaInGame += 1;
             newFc.transform.position = transform.position;
-            //newFc.ArriveInPort(this); not needed since the placement of the flottilla on the port will trigger the collision
+            //newFc.ArriveInPort(this); //not needed since the placement of the flottilla on the port will trigger the collision
             // causing the flottilla to dock normally
         }
     }

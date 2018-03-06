@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour {
+    public AudioClip battleSFX;
+
     private FlottillaStats stats;
     private FlottillaStats enemyStats;
     private bool isVictorious;
+
     // Use this for initialization
     void Start () {
         stats = GetComponent<FlottillaStats>();
@@ -22,6 +25,7 @@ public class PlayerCombat : MonoBehaviour {
     public bool ResolveOutcome(FlottillaStats enemy)
     {
         enemyStats = enemy;
+        GameController.instance.audioController.PlaySFX(battleSFX);
         if (EvaluateOutcome())
         {
             Debug.Log("Player destroyed "+enemy.gameObject.name+ "and plundered "+enemy.gold+" ducats.");
@@ -31,7 +35,6 @@ public class PlayerCombat : MonoBehaviour {
         }
         else
         {           
-            Debug.Log("GAME OVER.");
             GameController.instance.GameOver();
             isVictorious = false;
         }
@@ -44,6 +47,5 @@ public class PlayerCombat : MonoBehaviour {
         {
             return false;
         }
-
     }
 }

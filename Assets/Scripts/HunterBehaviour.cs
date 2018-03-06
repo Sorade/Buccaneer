@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HunterBehaviour : Behaviour {
-    public float scanRadius = 6f;
+    public float scanRadius = 10f;
     private Transform player;
     private FlottillaMotor motor;
     private bool isOnHunt = false;
