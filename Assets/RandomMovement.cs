@@ -44,7 +44,6 @@ public class RandomMovement : MonoBehaviour {
     {
         float destinationX = Random.Range(rangeX.x, rangeX.y);
         float destinationZ = Random.Range(rangeZ.x, rangeZ.y);
-        Debug.Log(" new X: " + destinationX + " new Y: " + destinationZ);
         destination = new Vector3(destinationX, transform.position.y, destinationZ);
     }
 

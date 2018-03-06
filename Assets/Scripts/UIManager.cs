@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour {
     [HideInInspector]
     public static UIManager instance = null;
     public Text scoreBoard;
+    public GameObject restartButton;
+    public GameObject gameOverText;
 
     private void Awake()
     {
@@ -26,8 +28,19 @@ public class UIManager : MonoBehaviour {
         #endregion //Singleton
     }
 
+    private void Start()
+    {
+        EventManager.StartListening(SimpleEvent.GAME_OVER, ShowGameOverMenu);
+    }
+
     private void Update()
     {
         scoreBoard.text = GameController.instance.score.ToString();
+    }
+
+    void ShowGameOverMenu()
+    {
+        restartButton.SetActive(true);
+        gameOverText.SetActive(true);
     }
 }

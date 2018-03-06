@@ -87,7 +87,8 @@ public class FlottillaController : MonoBehaviour {
         //checks that the flottilla in indeed in a port before leaving it
         if (currentPort != null)
         {
-            transform.rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
+            transform.position = currentPort.transform.position;
+            //transform.rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
             Vector3 newDest = currentPort.RequestDestination(stats.mission);
             motor.MoveToPoint(newDest);
             currentPort = null;

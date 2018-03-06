@@ -7,6 +7,7 @@ public class PortController : MonoBehaviour {
     public DockingQueue docked = new DockingQueue();
     private Vector3[] otherPortLocs;
 
+    [SerializeField]
     private float cooldown = 3f;
     private float timer;
 

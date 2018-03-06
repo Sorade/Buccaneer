@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     [HideInInspector]
@@ -8,6 +9,7 @@ public class GameController : MonoBehaviour {
     public int maxFlottillas;
     public int flottillaInGame;
     private PortController[] allPorts;
+    public GameObject player;
 
     public int score;
 
@@ -30,6 +32,9 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        player = GameObject.FindGameObjectWithTag("Player");
+
+
         GameObject[] allPortGOs = GameObject.FindGameObjectsWithTag("Port");
         allPorts = new PortController[allPortGOs.Length];
         for (int i = 0; i < allPortGOs.Length; i++ )
@@ -45,7 +50,6 @@ public class GameController : MonoBehaviour {
                 Debug.LogWarning("Some objects are missing 'Port' tags, or some non-port GO have the 'Port' tag.");
             }
         }
-
     }
 
     // Update is called once per frame
@@ -64,7 +68,18 @@ public class GameController : MonoBehaviour {
     
     public void GameOver()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
-    }       
+        EventManager.TriggerEvent(SimpleEvent.GAME_OVER);
+    }
+
+    IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(1.5f);
+        StartGame();
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
