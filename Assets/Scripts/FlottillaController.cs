@@ -50,7 +50,11 @@ public class FlottillaController : MonoBehaviour {
         switch (otherTag)
         {
             case "Port":
-                ArriveInPort(other.gameObject.GetComponent<PortController>());
+                //if the port is the destination then arrive in it
+                if (other.transform.position.x == motor.GetDestination().x && other.transform.position.z == motor.GetDestination().z)
+                {
+                    ArriveInPort(other.gameObject.GetComponent<PortController>());
+                }
                 break;
             case "Player":
                 //if player wins the battle
@@ -68,12 +72,14 @@ public class FlottillaController : MonoBehaviour {
     public void Sleep()
     {
         transform.Find("GFX").gameObject.SetActive(false);
-        this.enabled = false;
-        motor.MoveToPoint(transform.position);
+        //this.enabled = false;
+        gameObject.SetActive(false);
+        //motor.MoveToPoint(transform.position);
     }
 
     public void WakeUp() {
-        this.enabled = true;
+        //this.enabled = true;
+        gameObject.SetActive(true);
         //transform.rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
         transform.Find("GFX").gameObject.SetActive(true);
     }

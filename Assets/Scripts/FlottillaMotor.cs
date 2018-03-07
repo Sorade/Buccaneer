@@ -29,4 +29,9 @@ public class FlottillaMotor : MonoBehaviour {
         GameObject[] allPorts = GameObject.FindGameObjectsWithTag("Port");
         MoveToPoint(allPorts[Random.Range(0, allPorts.Length)].transform.position);
     }
+
+    public Vector3 GetDestination()
+    {
+        return agent.destination;
+    }
 }
