@@ -12,7 +12,25 @@ public class GameController : MonoBehaviour {
     public GameObject player;
     public AudioController audioController;
 
-    public int score;
+    private int Score;
+    public int score
+    {
+        get
+        {
+            return Score;
+        }
+        set
+        {
+            Score = value;
+            if (score == victoryScore)
+            {
+                Victory();
+            }
+            EventManager.TriggerEvent(SimpleEvent.SCORE_CHANGE);
+        }
+    }
+
+    public int victoryScore;
 
     private void Awake()
     {
@@ -112,6 +130,14 @@ public class GameController : MonoBehaviour {
         PauseGame(1);
     }
 
+    public void Victory()
+    {
+        Debug.Log("Victory.");
+        player.SetActive(false);
+        EventManager.TriggerEvent(SimpleEvent.VICTORY);
+        PauseGame(1);
+    }
+
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
@@ -122,5 +148,18 @@ public class GameController : MonoBehaviour {
     {
         EventManager.TriggerEvent(SimpleEvent.GAME_START);
         PauseGame(0);
+    }
+
+    public float GetNormalizeScore()
+    {
+        if (score != 0)
+        {
+            Debug.Log(victoryScore + "  .  " + score + "   .  " + victoryScore / score);
+            return score / (float) victoryScore;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }
